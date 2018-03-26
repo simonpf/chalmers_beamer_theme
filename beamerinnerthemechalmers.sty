@@ -1,0 +1,42 @@
+\mode<presentation>
+
+\setbeamertemplate{background}{
+}
+
+% Title page
+\defbeamertemplate*{title page}{chalmers}[1][]
+{ 
+  \vfill
+  \begin{minipage}[c][8.0cm][c]{\textwidth}%
+    \usebeamerfont{title}\inserttitle\par%
+    \usebeamerfont{subtitle}\insertsubtitle%
+    \vfill
+    \begin{minipage}[t]{\textwidth}%
+    \begin{minipage}[c]{0.6\textwidth}%
+      \usebeamerfont{author}\insertauthor
+
+      \usebeamerfont{institute}\insertinstitute%
+    \end{minipage}%
+    \hfill%
+    \begin{minipage}[c]{%
+        \if@simpleLogo
+        0.4\textwidth
+        \else
+        0.3\textwidth
+        \fi}%
+      \vfill
+      \includegraphics[width=\textwidth]{%
+        \if@simpleLogo
+        figures/logo%
+        \else
+        figures/logo_a%
+        \fi}%
+    \end{minipage}%
+    \end{minipage}
+  \end{minipage}%
+  \thispagestyle{empty}
+  \vfill
+}
+
+\mode
+<all>

@@ -1,0 +1,47 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\usepackage{adjustbox}
+\usepackage[scaled]{helvet}
+%\usepackage[scaled]{uarial}
+
+\newif\if@simpleLogo
+\@simpleLogofalse
+\DeclareOption{simple_logo}{\@simpleLogotrue}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sub Themes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\useinnertheme{chalmers}
+\useoutertheme{chalmers}
+\usecolortheme{chalmers}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{sections/subsections in toc}[round]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% title page
+\setbeamerfont{title}{family=\sffamily, series=\bfseries, size=\huge}
+\setbeamerfont{subtitle}{family=\sffamily, series=\mdseries, size=\large}
+\setbeamerfont{author}{family=\sffamily, series=\mdseries, size=\normalsize}
+
+% frame
+\setbeamerfont{frametitle}{family=\sffamily, series=\bfseries, size=\normalsize}
+\setbeamerfont{framesubtitle}{family=\sffamily, series=\mdseries, size=\small}
+
+% block
+\setbeamerfont{block title}{family=\sffamily, series=\bfseries, size=\normalsize}
+
+\mode<all>
