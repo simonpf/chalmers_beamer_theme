@@ -2,8 +2,12 @@
 
 % Requirement
 \RequirePackage{tikz}
-\usepackage{adjustbox}
-\usepackage[scaled]{helvet}
+\RequirePackage{adjustbox}
+\RequirePackage[scaled]{helvet}
+\RequirePackage{graphicx}
+\RequirePackage{grffile}
+\RequirePackage{xcolor}
+\RequirePackage{xstring}
 %\usepackage[scaled]{uarial}
 
 \newif\if@simpleLogo
@@ -15,16 +19,24 @@
 % Sub Themes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\definecolor{grey_light}{HTML}{cccccc}
+\definecolor{grey_dark}{HTML}{333333}
+\definecolor{red_dark}{HTML}{be0208}
+\definecolor{red_light}{HTML}{FCB5B6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sub Themes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \useinnertheme{chalmers}
 \useoutertheme{chalmers}
 \usecolortheme{chalmers}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Theme Settings
+% Theme settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{blocks}[default]
 \setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{sections/subsections in toc}[round]
 
@@ -43,5 +55,8 @@
 
 % block
 \setbeamerfont{block title}{family=\sffamily, series=\bfseries, size=\normalsize}
+
+%structure
+\setbeamerfont{structure}{family=\sffamily, series=\bfseries, size=\normalsize}
 
 \mode<all>

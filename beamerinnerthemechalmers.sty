@@ -7,9 +7,10 @@
 \defbeamertemplate*{title page}{chalmers}[1][]
 { 
   \vfill
-  \begin{minipage}[c][8.0cm][c]{\textwidth}%
+  \vspace{1.5em}
+  \begin{minipage}[c][8.5cm][c]{\textwidth}%
     \usebeamerfont{title}\inserttitle\par%
-    \usebeamerfont{subtitle}\insertsubtitle%
+    \vspace{1.0em}\usebeamerfont{subtitle}\insertsubtitle%
     \vfill
     \begin{minipage}[t]{\textwidth}%
     \begin{minipage}[c]{0.6\textwidth}%
@@ -20,9 +21,9 @@
     \hfill%
     \begin{minipage}[c]{%
         \if@simpleLogo
-        0.4\textwidth
+        0.4\textwidth%
         \else
-        0.3\textwidth
+        0.3\textwidth%
         \fi}%
       \vfill
       \includegraphics[width=\textwidth]{%
@@ -38,5 +39,21 @@
   \vfill
 }
 
+\defbeamertemplate*{block alerted begin}{chalmers}[1][]
+{
+  \par\vskip\medskipamount%
+  \IfStrEq{\insertblocktitle}{}{}{
+      \begin{beamercolorbox}[colsep*=.75ex]{block title alerted}
+        \usebeamerfont*{block title alerted}\insertblocktitle%
+      \end{beamercolorbox}%
+  }%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title alerted}
+  {}
+  {\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body alerted}%
+    \ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
 \mode
 <all>

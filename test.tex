@@ -1,0 +1,85 @@
+\documentclass[presentation]{beamer}
+
+%
+% Chalmers theme
+%
+
+\usetheme{chalmers}
+\usetheme{default}
+
+%
+% Title page info
+%
+
+\title{Chalmers Beamer Theme}
+\subtitle{Yay, no more powerpoint}
+\author{Simon Pfreundschuh}
+\institute{Department of Earth, Space and Environment}
+\date{\today}
+
+\begin{document}
+
+%
+% Title page
+%
+
+\maketitle
+
+%
+% Blocks
+%
+
+\begin{frame}{A Slide}
+
+  \begin{block}{A simple block}
+    without background.
+    \begin{itemize}
+    \item But with a list
+      \begin{itemize}
+      \item and a nested one
+      \end{itemize}
+    \item and another one.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Another simple block}
+    This time with an enumeration:
+    \begin{enumerate}
+    \item First thing
+    \item Second thing
+    \end{enumerate}
+  \end{block}
+
+\end{frame}
+
+%
+% Example
+%
+
+\begin{frame}{A Slide}
+  \subtitle{with an example}
+
+  \begin{example}
+    An example of an example block.
+  \end{example}
+
+\end{frame}
+
+%
+% Example
+%
+
+\begin{frame}{A Slide}
+  \subtitle{with an example}
+
+  \begin{alertblock}{An alert block}
+    with a title.
+  \end{alertblock}
+
+  \begin{alertblock}{}
+    And another one without a title.
+  \end{alertblock}
+
+\end{frame}
+
+\end{document}
