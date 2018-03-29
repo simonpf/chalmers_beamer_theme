@@ -55,5 +55,23 @@
   \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body alerted}%
     \ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
 }
+
+\defbeamertemplate*{theorem begin}{chalmers}[1][]
+{%
+  \begin{beamercolorbox}[colsep*=.75ex]{theorem title}
+    \usebeamerfont*{block title alerted}\inserttheoremheadfont\inserttheoremname%
+    \ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+  \end{beamercolorbox}%
+  \parskip0pt\par%
+  {\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{theorem body}\vbox{}%
+}%
+
+\defbeamertemplate*{theorem end}{chalmers}[1][]
+{%
+  \end{beamercolorbox}
+}%
+
 \mode
 <all>
