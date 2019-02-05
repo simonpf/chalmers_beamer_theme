@@ -2,27 +2,42 @@
 
 \mode<presentation>
 
+\newcommand\contactauthor[1]{\newcommand{\insertcontactauthor}{#1}}
+\newcommand\authormail[1]{\newcommand{\insertauthormail}{#1}}
+
+%
+% Colors
+%
+
 \definecolor{grey_light}{HTML}{cccccc}
 \definecolor{grey_dark}{HTML}{333333}
 \definecolor{red_dark}{HTML}{be0208}
 \definecolor{red_light}{HTML}{FCB5B6}
 \definecolor{none}{HTML}{FF0000}
+%
+% Header
+%
 
 \setbeamercolor{headline}{fg = none, bg = black}
+
+%title
 \setbeamercolor{titleline}{fg = none, bg = white}
-
-\setbeamercolor{footline}{fg = none, bg = none}
-\setbeamerfont{footline}{size = \large, series = \bf}
-
-\setbeamercolor{separation line}{bg = grey_dark}
-
 \setbeamercolor{title in headline}{fg = black}
 \setbeamerfont{title in headline}{series = \bfseries, size = \LARGE}
-
+% author
 \setbeamercolor{author in headline}{fg = white}
 \setbeamerfont{author in headline}{size = \normalsize, series = \mdseries}
+% affiliation
 \setbeamercolor{institute in headline}{fg = white}
 \setbeamerfont{institute in headline}{size = \normalsize, series = \bfseries}
+
+
+%
+% Footer
+%
+\setbeamercolor{separation line}{bg = black}
+\setbeamercolor{footline}{fg = none, bg = none}
+\setbeamerfont{footline}{size = \large, series = \bf}
 
 \setbeamercolor{framesubtitle}{fg = none, bg = grey_dark}
 \setbeamercolor{author in head/foot}{fg=white, bg = black}
@@ -38,6 +53,9 @@
 \setbeamerfont{block title}{size = \large, series = \bf}
 \setbeamercolor{upper separation line head}{fg = none}
 \setbeamercolor{lower separation line head}{fg = none, bg = white}
+
+\setbeamercolor*{block body alerted}{fg = black, bg = red_light }
+\setbeamercolor*{block title alerted}{fg = white,  bg = red_dark}
 
 %
 % Example
@@ -56,17 +74,9 @@
 \setbeamercolor{itemize item}{fg = black, bg = white}
 \setbeamertemplate{navigation symbols}{}  % no navigation on a poster
 
-\newenvironment<>{myblock}[1]{%
- \begin{actionenv}#2%
- \def\insertblocktitle{\centering#1}%
- \par%
- \usebeamertemplate{block begin}\leftskip=14pt\rightskip=14pt\vspace{10pt}}
- {\par\vspace{10pt}\usebeamertemplate{block end}
- \end{actionenv}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% !!! This environment can't both have nice margins AND display the contained text as justified:
-% We preferentially use the above but keep this one just-in-case
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Block environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{block begin}{
   \vskip.75ex
@@ -86,7 +96,29 @@
   \end{beamercolorbox}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alerted block environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{block alerted begin}{
+  \vskip.75ex
+  \begin{beamercolorbox}[rounded = false, shadow = false, leftskip = 1cm, colsep* =.75ex]%
+    {block title alerted}%
+    \rule{0pt}{10pt}
+    \usebeamerfont*{block title alerted}\insertblocktitle
+    \rule{0pt}{10pt}
+  \end{beamercolorbox}%
+  {\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body alerted}%
+  \begin{beamercolorbox}[rounded = false, shadow = false, colsep* = .75ex, sep = .75ex, vmode]
+    {block body alerted}%
+    \ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \setbeamertemplate{headline}{
   \leavevmode
 
@@ -153,32 +185,21 @@
   \end{beamercolorbox}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \setbeamertemplate{footline}{
-  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
-    \rule{0pt}{2pt}
-  \end{beamercolorbox}
-
-
-  \begin{beamercolorbox}[ht=4ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
-    CHALMERS UNIVERSITY OF TECHNOLOGY
+  \begin{beamercolorbox}[ht=2.2ex, leftskip=1cm, rightskip=1cm]{author in head/foot}%
+    \usebeamerfont{footline}
+    \insertcontactauthor
     \hfill
-    \today
-    \hfill
-    \href{mailto:simon.pfreundschuh@chalmers.se}{simon.pfreundschuh@chalmers.se}
-    \vskip1ex
-  \end{beamercolorbox}
-
-  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
-    \rule{0pt}{2pt}
+    \href{mailto:\insertauthormail}{\insertauthormail}
+    \vspace{0.1ex}
   \end{beamercolorbox}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Display a grid to help align images ... and it looks nice with this color scheme
-% \beamertemplategridbackground[1cm]
 
-%Some beamer customizations:
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]{}% Number float-like environments
 
