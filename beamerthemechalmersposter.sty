@@ -5,6 +5,10 @@
 \newcommand\contactauthor[1]{\newcommand{\insertcontactauthor}{#1}}
 \newcommand\authormail[1]{\newcommand{\insertauthormail}{#1}}
 
+\newif\if@simpleLogo
+\@simpleLogofalse
+\DeclareOption{simple_logo}{\@simpleLogotrue}
+\ProcessOptions
 %
 % Colors
 %
@@ -21,14 +25,19 @@
 \setbeamercolor{headline}{fg = none, bg = black}
 
 %title
-\setbeamercolor{titleline}{fg = none, bg = white}
-\setbeamercolor{title in headline}{fg = black}
+\setbeamercolor{titleline}{fg = none, bg = black}
+\setbeamercolor{title in headline}{fg = white}
 \setbeamerfont{title in headline}{series = \bfseries, size = \LARGE}
+%title
+\setbeamercolor{titleline}{fg = none, bg = black}
+\setbeamercolor{subtitle in headline}{fg = white}
+\setbeamerfont{subtitle in headline}{series = \bfseries, size = \large}
 % author
-\setbeamercolor{author in headline}{fg = white}
+\setbeamercolor{authorline}{fg = none, bg = white}
+\setbeamercolor{author in headline}{fg = black}
 \setbeamerfont{author in headline}{size = \normalsize, series = \mdseries}
 % affiliation
-\setbeamercolor{institute in headline}{fg = white}
+\setbeamercolor{institute in headline}{fg = black}
 \setbeamerfont{institute in headline}{size = \normalsize, series = \bfseries}
 
 
@@ -51,7 +60,7 @@
 \setbeamercolor*{block body}{fg = black, bg = white}
 \setbeamercolor*{block title}{fg = white, bg = black}
 \setbeamerfont{block title}{size = \large, series = \bf}
-\setbeamercolor{upper separation line head}{fg = none}
+\setbeamercolor{upper separation line head}{fg = none, bg = black}
 \setbeamercolor{lower separation line head}{fg = none, bg = white}
 
 \setbeamercolor*{block body alerted}{fg = black, bg = red_light }
@@ -122,20 +131,56 @@
 \setbeamertemplate{headline}{
   \leavevmode
 
-  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+%%%%%%% title line
+  \begin{beamercolorbox}[wd=\paperwidth]{titleline}
     \begin{columns}[T]
-      \begin{column}{.1\paperwidth}
+      \begin{column}{10pt}
       \end{column}
-      \begin{column}{.25\paperwidth}
-        \rule{0pt}{2cm}
-        \begin{center}
-          \includegraphics[width=\textwidth]{figures/logo_a_h_w}
-        \end{center}
+      \begin{column}{0.65\paperwidth}
         \rule{0pt}{1cm}
+        \vskip1cm
+        \usebeamercolor{title in headline}{%
+          \usebeamerfont{title in headline}{%
+            \linespread{1.5}
+            \color{fg}\inserttitle%
+            \linespread{1.0}
+          }\\[1ex]%
+        }%
+        \usebeamercolor{subtitle in headline}{%
+          \usebeamerfont{subtitle in headline}{%
+            \linespread{1.5}
+            \color{fg}\insertsubtitle%
+            \linespread{1.0}
+          }\\[1ex]%
+        }
+        \vskip1cm
       \end{column}
-      \begin{column}{.62\paperwidth}
+      \begin{column}{.025\paperwidth}
+      \end{column}
+      \begin{column}{.275\paperwidth}
+        \rule{0pt}{1.5cm}
+        \vspace{-1cm}
+        \begin{center}
+        \if@simpleLogo
+          \vfill
+          \includegraphics[width=0.7\textwidth]{figures/logo_w}
+          \vfill
+        \else
+          \includegraphics[width=\textwidth]{figures/logo_a_w}
+        \fi%
+          \rule{0pt}{2cm}
+        \end{center}
+      \end{column}
+    \end{columns}
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=\paperwidth]{authorline}
+    \begin{columns}[T]
+      \begin{column}{.05\paperwidth}
+      \end{column}
+      \begin{column}{.8\paperwidth}
         \vskip3cm
-        \raggedleft
+        \raggedright
 %%%%%%%%% author
         \usebeamerfont{author in headline}{%
           \usebeamercolor{author in headline}{
@@ -150,35 +195,11 @@
         }
         \vskip1ex
       \end{column}
-      \begin{column}{.02\paperwidth}
+      \begin{column}{.375\paperwidth}
       \end{column}
     \end{columns}
   \end{beamercolorbox}
 
-  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
-    \rule{0pt}{2cm}
-  \end{beamercolorbox}
-
-  \begin{beamercolorbox}[wd=\paperwidth]{titleline}
-    \begin{columns}[T]
-      \begin{column}{.1\paperwidth}
-      \end{column}
-      \begin{column}{0.8\paperwidth}
-        \vskip1cm
-        \centering
-        \usebeamercolor{title in headline}{%
-          \usebeamerfont{title in headline}{%
-            \linespread{1.5}
-            \color{fg}\inserttitle%
-            \linespread{1.0}
-          }\\[1ex]%
-        }
-        \vskip1cm
-      \end{column}
-      \begin{column}{.1\paperwidth}
-      \end{column}
-    \end{columns}
-  \end{beamercolorbox}
 
   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
     \rule{0pt}{2cm}
@@ -186,7 +207,7 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Headline
+% Footline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{footline}{
